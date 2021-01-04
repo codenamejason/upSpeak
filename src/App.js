@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import Web3 from 'web3';
 import Identicon from 'identicon.js';
+import { Spin, Alert, Skeleton, Space, Divider, Switch, Form, Radio } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
 import './App.css';
 import SocialNetwork from './abis/SocialNetwork.json'
 import Navbar from './components/Navbar'
 import Main from './components/Main'
+
+const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+const spinner =  <Spin style={{ fontSize: 24 }} tip="Loading..."></Spin>;
 
 class App extends Component {
 
@@ -56,6 +61,12 @@ class App extends Component {
     }
   }
 
+  uploadVideo(content) {
+    this.setState({ loading: true });
+    
+
+  }
+
   createPost(content) {
     this.setState({ loading: true })
     this.state.socialNetwork.methods.createPost(content).send({ from: this.state.account })
@@ -78,7 +89,7 @@ class App extends Component {
   }
 
   tipComment(id, tipAmount) {
-    
+
   }
 
   constructor(props) {
@@ -88,7 +99,11 @@ class App extends Component {
       socialNetwork: null,
       postCount: 0,
       posts: [],
-      loading: true
+      loading: true,
+      active: true,
+      size: 'default',
+      buttonShape: 'default',
+      avatarShape: 'square',
     }
 
     this.createPost = this.createPost.bind(this)
@@ -96,17 +111,32 @@ class App extends Component {
   }
 
   render() {
+    const { active, size, buttonShape, avatarShape } = this.state;
     return (
       <div>
         <Navbar account={this.state.account} />
+        {/* todo: build left panel under topics for navigation ??? */}
+
         { this.state.loading
-          ? <div id="loader" className="text-center mt-5"><p>Loading...</p></div>
+          ? <>
+            <div id="" className="text-center mt-5">              
+                {spinner}           
+            </div>
+              <Space>
+                <Skeleton.Button />
+                <Skeleton.Button active={active} size={size} shape={buttonShape} />
+                <Skeleton.Button active={active} size={size} shape={buttonShape} />
+                <Skeleton.Avatar active={active} size={size} shape={avatarShape} />
+                <Skeleton.Input style={{ width: 200 }} active={active} size={size} />
+              </Space>
+            </>
           : <Main
               posts={this.state.posts}
               createPost={this.createPost}
               tipPost={this.tipPost}
             />
         }
+
       </div>
     );
   }

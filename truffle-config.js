@@ -8,6 +8,24 @@ module.exports = {
       port: 8545,
       network_id: "*" // Match any network id
     },
+    main: {
+
+    },
+    matic: {
+
+    },
+    xdai: {
+
+    },
+    rinkeby: {
+
+    },
+    kovan: {
+      
+    }
+
+
+
   },
   contracts_directory: './src/contracts/',
   contracts_build_directory: './src/abis/',
