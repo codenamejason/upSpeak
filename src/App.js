@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import Web3 from 'web3';
 import Identicon from 'identicon.js';
 import './App.css';
-import SocialNetwork from '../abis/SocialNetwork.json'
-import Navbar from './Navbar'
-import Main from './Main'
+import SocialNetwork from './abis/SocialNetwork.json'
+import Navbar from './components/Navbar'
+import Main from './components/Main'
 
 class App extends Component {
 
@@ -61,6 +61,7 @@ class App extends Component {
     this.state.socialNetwork.methods.createPost(content).send({ from: this.state.account })
     .once('receipt', (receipt) => {
       this.setState({ loading: false })
+      window.reload();
     })
   }
 
@@ -70,6 +71,14 @@ class App extends Component {
     .once('receipt', (receipt) => {
       this.setState({ loading: false })
     })
+  }
+
+  createComment(comment, postId) {
+
+  }
+
+  tipComment(id, tipAmount) {
+    
   }
 
   constructor(props) {

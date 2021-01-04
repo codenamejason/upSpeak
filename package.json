@@ -1,8 +1,8 @@
 {
-  "name": "upSpeak",
+  "name": "ad-trumpet",
   "version": "0.1.0",
   "description": "Ethereum based Decentralized Social Network & Community powered Free Speech Platform.",
-  "author": "admin@upSpeak.online",
+  "author": "admin@adtrumpet.online",
   "dependencies": {
     "babel-polyfill": "6.26.0",
     "babel-preset-env": "1.7.0",
@@ -10,6 +10,7 @@
     "babel-preset-stage-2": "6.24.1",
     "babel-preset-stage-3": "6.24.1",
     "babel-register": "6.26.0",
+    "babel-loader": "8.0.4",
     "bootstrap": "4.3.1",
     "chai": "^4.2.0",
     "chai-as-promised": "7.1.1",

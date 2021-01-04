@@ -27,7 +27,7 @@ contract SocialNetwork {
     );
 
     constructor() public {
-        name = "upSpeak";
+        name = "adTrumpet";
     }
 
     function createPost(string memory _content) public {
